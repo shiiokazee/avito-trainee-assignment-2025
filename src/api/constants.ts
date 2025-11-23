@@ -18,4 +18,6 @@ export const queryClient = new QueryClient({
   },
 });
 
-export const apiClient = new Api();
+export const apiClient = new Api({
+  baseURL: API_BASE_URL,
+});

@@ -11,20 +11,23 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
+        index: true,
+        element: <Navigate to={ROUTES.list} />,
+      },
+      {
         path: ROUTES.list,
-        element: <ItemsListPage />,
+        Component: ItemsListPage,
       },
       {
         path: ROUTES.item,
-        element: <ItemDetailsPage />,
+        Component: ItemDetailsPage,
       },
       {
         path: ROUTES.stats,
-        element: <StatsPage />,
+        Component: StatsPage,
       },
     ],
   },
-
   {
     // Редирект на главную для всех ненайденных страницы
     path: '*',
