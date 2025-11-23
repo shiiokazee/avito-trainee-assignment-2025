@@ -108,14 +108,12 @@ export const ItemDetailsPage: React.FC = () => {
   return (
     <Grid container spacing={2}>
       <Grid size={{ md: 12, lg: 6 }}>
-        <Paper sx={{ padding: 2, height: 400, position: 'relative' }}>
-          <div>
-            <Carousel renderThumbs={() => [null]}>
-              {data?.data.images?.map((image, i) => (
-                <img key={i} src={image} width="100%" />
-              ))}
-            </Carousel>
-          </div>
+        <Paper sx={{ padding: 2, height: 400 }}>
+          <Carousel renderThumbs={() => []} infiniteLoop>
+            {data?.data.images?.map((image, i) => (
+              <img key={i} src={image} height="400px" />
+            ))}
+          </Carousel>
         </Paper>
       </Grid>
 
