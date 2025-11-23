@@ -7,6 +7,7 @@ import {
   NavigateBefore as PreviosIcon,
 } from '@mui/icons-material';
 import {
+  Alert,
   Box,
   Button,
   Card,
@@ -83,18 +84,20 @@ export const ItemDetailsPage: React.FC = () => {
 
     await (adActionType === 'reject' ? rejectAd : requestAdChanges)(values);
 
-    // TODO
+    // TODO: Уведомление и обновление кэша
   };
 
   if (isError) {
-    <Box>
-      <Typography variant="h4">
-        Объявление с заданным <code>id</code> не найдено
-      </Typography>
-      <Link to={generatePath(ROUTES.list)}>
-        <Button>К списку объявлений</Button>
-      </Link>
-    </Box>;
+    return (
+      <Alert severity="warning">
+        <Typography>
+          Объявление с заданным <code>id</code> не найдено
+        </Typography>
+        <Link to={generatePath(ROUTES.list)}>
+          <Button>К списку объявлений</Button>
+        </Link>
+      </Alert>
+    );
   }
 
   if (isLoading) {

@@ -18,7 +18,6 @@ type ItemCardProps = {
 export const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   return (
     <Card sx={{ display: 'flex', flexWrap: 'nowrap', gap: 4 }}>
-      {/* FIXME: Форматирование цены и статус */}
       <CardMedia
         component="img"
         src={item.images?.[0] ?? placeholderImage}

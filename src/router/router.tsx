@@ -1,20 +1,33 @@
+import { AppLayout } from '@/components/AppLayout';
 import { ItemDetailsPage } from '@/pages/ItemDetailsPage';
 import { ItemsListPage } from '@/pages/ItemsListPage';
-import { createBrowserRouter } from 'react-router';
+import { StatsPage } from '@/pages/StatsPage';
+import { createBrowserRouter, Navigate } from 'react-router';
 import { ROUTES } from './routes';
 
 export const router = createBrowserRouter([
   {
     path: ROUTES.index,
-    // FIXME: Добавить редирект
-    element: <></>,
+    element: <AppLayout />,
+    children: [
+      {
+        path: ROUTES.list,
+        element: <ItemsListPage />,
+      },
+      {
+        path: ROUTES.item,
+        element: <ItemDetailsPage />,
+      },
+      {
+        path: ROUTES.stats,
+        element: <StatsPage />,
+      },
+    ],
   },
+
   {
-    path: ROUTES.list,
-    element: <ItemsListPage />,
-  },
-  {
-    path: ROUTES.item,
-    element: <ItemDetailsPage />,
+    // Редирект на главную для всех ненайденных страницы
+    path: '*',
+    element: <Navigate to={ROUTES.list} />,
   },
 ]);

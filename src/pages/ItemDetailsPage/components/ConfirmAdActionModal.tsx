@@ -56,7 +56,7 @@ export const ConfirmAdActionModal: React.FC<RejectAdModalProps> = ({
           <Typography variant="h4">
             {actionType === 'reject'
               ? 'Отклонение объявления'
-              : 'Запрос доработок'}
+              : 'Запрос изменений'}
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <TextField required select fullWidth label="Причина" name="reason">
