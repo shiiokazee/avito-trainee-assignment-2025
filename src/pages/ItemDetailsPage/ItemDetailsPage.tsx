@@ -25,8 +25,9 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-import Carousel from 'react-material-ui-carousel';
 import { useMutation, useQuery } from 'react-query';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { generatePath, Link, useParams } from 'react-router';
 import { ConfirmAdActionModal } from './components';
 import type { AdActionParams } from './components/types';
@@ -107,13 +108,14 @@ export const ItemDetailsPage: React.FC = () => {
   return (
     <Grid container spacing={2}>
       <Grid size={{ md: 12, lg: 6 }}>
-        <Paper sx={{ padding: 2 }}>
-          {/* FIXME */}
-          <Carousel sx={{ height: 400 }}>
-            {data?.data.images?.map((image) => (
-              <img key={image} src={image} />
-            ))}
-          </Carousel>
+        <Paper sx={{ padding: 2, height: 400, position: 'relative' }}>
+          <div>
+            <Carousel renderThumbs={() => [null]}>
+              {data?.data.images?.map((image, i) => (
+                <img key={i} src={image} width="100%" />
+              ))}
+            </Carousel>
+          </div>
         </Paper>
       </Grid>
 
