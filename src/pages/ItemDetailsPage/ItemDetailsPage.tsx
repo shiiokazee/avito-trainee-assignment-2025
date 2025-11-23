@@ -5,7 +5,6 @@ import { ROUTES } from '@/router';
 import {
   NavigateNext as NextIcon,
   NavigateBefore as PreviosIcon,
-  Star as StarIcon,
 } from '@mui/icons-material';
 import {
   Box,
@@ -15,6 +14,7 @@ import {
   Chip,
   Grid,
   Paper,
+  Rating,
   Skeleton,
   Table,
   TableBody,
@@ -192,11 +192,10 @@ export const ItemDetailsPage: React.FC = () => {
                   <Typography sx={{ fontWeight: 700 }}>
                     {data?.data.seller?.rating}
                   </Typography>
-                  <StarIcon
-                    sx={(theme) => ({
-                      ml: 0.5,
-                      color: theme.palette.warning.light,
-                    })}
+                  <Rating
+                    value={Number(data?.data.seller?.rating)}
+                    readOnly
+                    precision={0.1}
                   />
                 </Box>
               }
